@@ -5,7 +5,6 @@ import java.util.Locale;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.widget.Toast;
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
 import edu.dhbw.andar.exceptions.AndARException;
@@ -34,19 +33,9 @@ public class CustomActivity extends AndARActivity implements TextToSpeech.OnInit
 			//handle the exception, that means: show the user what happened
 			System.out.println("");
 		}		
+		startPreview();
 	}
 	
-	
-	
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		if (hasFocus)
-			startPreview();
-	}
-
-
-
 	@Override
     public void onPause() {
         // Don't forget to shutdown tts!
