@@ -2,8 +2,6 @@ package com.raa.autocam;
 
 import java.io.IOException;
 
-import com.raa.autocam.business.ManejadorFotos;
-
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -11,7 +9,11 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.raa.autocam.business.ManejadorFotos;
 
 public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
@@ -23,6 +25,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_camara);
 
 		if (!existeCamara()) {
@@ -40,7 +43,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 				surfaceHolder.addCallback(this);
 				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 				
-				sacarFoto();
+				
 			}
 		}
 	}
@@ -90,6 +93,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			sacarFoto();
 	}
 
 	@Override

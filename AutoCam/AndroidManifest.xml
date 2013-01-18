@@ -32,7 +32,8 @@
         </activity>
         <activity
             android:name="com.raa.autocam.CamaraActivity"
-            android:label="@string/title_activity_camara" >
+            android:label="@string/title_activity_camara"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

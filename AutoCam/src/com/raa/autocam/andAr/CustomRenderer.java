@@ -2,7 +2,6 @@ package com.raa.autocam.andAr;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import edu.dhbw.andar.AndARRenderer;
 import edu.dhbw.andar.interfaces.OpenGLRenderer;
@@ -17,6 +16,8 @@ import edu.dhbw.andar.interfaces.OpenGLRenderer;
  */
 public class CustomRenderer implements OpenGLRenderer {
 
+	private final int TIEMPO = 5;
+
 	/**
 	 * Light definitions
 	 */
@@ -24,6 +25,8 @@ public class CustomRenderer implements OpenGLRenderer {
 	TextToSpeech tts;
 	boolean finished;
 	CustomActivity context;
+	String texto;
+	int momento;
 
 	public CustomRenderer(CustomObject someObject, TextToSpeech tts,
 			CustomActivity context) {
@@ -40,14 +43,24 @@ public class CustomRenderer implements OpenGLRenderer {
 		if (this.someObject.isVisible()) {
 			if (!this.tts.isSpeaking()) {
 				if (!finished) {
-					String text = "Te he encontrado.";
-					this.tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+					texto = "Te he encontrado.";
+					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
 					finished = true;
+					momento = TIEMPO + 1;
 				}
 			}
-			if (!this.tts.isSpeaking() && finished)
-				context.objectoDetectado();
-
+			if (!this.tts.isSpeaking() && finished) {
+				if (momento == 0)
+					context.objectoDetectado();
+				else {
+					if (momento == 1)
+						texto = "Sonríe";
+					else
+						texto = String.valueOf(momento - 1);
+					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
+					momento--;
+				}
+			}
 		} else {
 			this.tts.stop();
 			finished = false;
