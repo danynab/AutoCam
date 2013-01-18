@@ -10,18 +10,18 @@ import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.raa.autocam.business.ManejadorFotos;
 
-public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
+public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 
 	private Camera camara;
 	private Integer idCamara = -1;
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,21 +35,21 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 		} else {
 			idCamara = buscarCamaraTrasera();
 			if (idCamara == null) {
-				Toast.makeText(this, R.string.error_no_camara_trasera, 
+				Toast.makeText(this, R.string.error_no_camara_trasera,
 						Toast.LENGTH_LONG).show();
 			} else {
 				surfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
 				surfaceHolder = surfaceView.getHolder();
 				surfaceHolder.addCallback(this);
 				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-				
-				
+
 			}
 		}
 	}
 
 	private void sacarFoto() {
-		camara.takePicture(null, null, new ManejadorFotos(getApplicationContext()));
+		camara.takePicture(null, null, new ManejadorFotos(
+				getApplicationContext()));
 	}
 
 	private boolean existeCamara() {
@@ -87,13 +87,13 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		camara = Camera.open(idCamara);
-			try {
-				camara.setPreviewDisplay(holder);
-				camara.startPreview();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			sacarFoto();
+		try {
+			camara.setPreviewDisplay(holder);
+			camara.startPreview();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		sacarFoto();
 	}
 
 	@Override

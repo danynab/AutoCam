@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 
-import com.raa.autocam.MainActivity;
+import com.raa.autocam.CamaraActivity;
 
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
@@ -44,7 +44,8 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-		Intent i = new Intent(this, MainActivity.class);
+		finish();
+		Intent i = new Intent(this, CamaraActivity.class);
 		startActivity(i);
 	}
 

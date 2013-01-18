@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(MainActivity.this, CamaraActivity.class);
+				Intent i = new Intent(MainActivity.this, CustomActivity.class);
 				startActivity(i);
 			}
 		});

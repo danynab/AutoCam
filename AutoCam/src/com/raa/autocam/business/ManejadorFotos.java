@@ -5,8 +5,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.raa.autocam.R;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 
 
 
+@SuppressLint("SimpleDateFormat")
 public class ManejadorFotos implements PictureCallback {
 
 	private final Context context;
