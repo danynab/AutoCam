@@ -10,20 +10,29 @@ import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.raa.autocam.business.ManejadorFotos;
 
 public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
 	private Integer idCamara = -1;
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
+	private Camera camara;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		setContentView(R.layout.activity_camara);
 
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		if (!existeCamara()) {
 			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
@@ -47,7 +56,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 	}
 
 	private void sacarFoto() {
-		//camara.takePicture(null, null, new ManejadorFotos(getApplicationContext()));
+		camara.takePicture(null, null, new ManejadorFotos(getApplicationContext()));
 	}
 
 	private boolean existeCamara() {
@@ -84,7 +93,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		Camera camara = Camera.open(idCamara);
+		camara = Camera.open(idCamara);
 			try {
 				camara.setPreviewDisplay(holder);
 				camara.startPreview();
@@ -97,8 +106,8 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder arg0) {
-		//camara.stopPreview();
-		//camara.release();
+		camara.stopPreview();
+		camara.release();
 	}
 
 	@Override

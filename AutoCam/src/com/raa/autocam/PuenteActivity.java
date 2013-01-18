@@ -6,11 +6,12 @@ import android.os.Bundle;
 
 public class PuenteActivity extends Activity {
 	
-	int segundos;
+	private int segundos;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_puente);
 		segundos = getIntent().getExtras().getInt("segundos");
 		lanzarCapturador();	

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.Window;
 
 import com.raa.autocam.PuenteActivity;
 
@@ -20,11 +19,11 @@ public class CustomActivity extends AndARActivity implements
 	private ARToolkit artoolkit;
 	private TextToSpeech tts;
 	private int segundos;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		tts = new TextToSpeech(this, this);
 		segundos = getIntent().getExtras().getInt("segundos");
 		try {
@@ -35,7 +34,8 @@ public class CustomActivity extends AndARActivity implements
 			artoolkit.registerARObject(someObject);
 
 			// optional, may be set to null
-			CustomRenderer renderer = new CustomRenderer(someObject, tts, segundos, this);
+			CustomRenderer renderer = new CustomRenderer(someObject, tts,
+					segundos, this);
 			// or might be omited
 			super.setNonARRenderer(renderer);
 		} catch (AndARException ex) {
@@ -46,28 +46,20 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-		finish();
+		tts.stop();
+		tts.shutdown();
+		
 		Intent i = new Intent(this, PuenteActivity.class);
 		i.putExtra("segundos", segundos);
 		startActivity(i);
-	}
-	
-	
-
-	@Override
-	protected void onPause() {
-		if (tts != null) {
-			tts.stop();
-			tts.shutdown();
-		}
-		super.onPause();
 		finish();
 	}
 
+	
 	@Override
-	public void onDestroy() {
-		
-		super.onDestroy();
+	protected void onPause() {
+		finish();
+		super.onPause();
 	}
 
 	/**
