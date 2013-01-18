@@ -10,13 +10,4 @@ public class AcercaDeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_acerca_de);
 	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		finish();
-	}
-	
-	
-
 }

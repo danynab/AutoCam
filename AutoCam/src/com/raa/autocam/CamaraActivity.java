@@ -22,6 +22,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 	private SurfaceHolder surfaceHolder;
 	private Camera camara;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

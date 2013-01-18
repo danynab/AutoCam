@@ -1,7 +1,11 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <TextView
@@ -20,12 +24,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" >
 
                 <ImageView
                     android:id="@+id/imageView1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:contentDescription="@string/foto_autor"
                     android:src="@drawable/dani" />
 
                 <LinearLayout
@@ -46,45 +52,41 @@
                         android:layout_height="wrap_content"
                         android:text="@string/uo_dani"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
-
                 </LinearLayout>
-
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" >
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/cris" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-                <TextView
-                    android:id="@+id/textView4"
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/foto_autor"
+                    android:src="@drawable/cris" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cristian_alvarez"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/uo_cris"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cristian_alvarez"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
 
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/uo_cris"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
+
+</ScrollView>
