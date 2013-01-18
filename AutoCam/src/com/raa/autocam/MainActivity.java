@@ -8,13 +8,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.raa.autocam.andAr.CustomActivity;
 
 public class MainActivity extends Activity {
 	
-	Integer segundos = null;
+	private int segundos;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +26,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				segundos = obtenerSegundos();
-				Toast.makeText(MainActivity.this, segundos+"", Toast.LENGTH_SHORT).show();
-				//TODO hacer algo con los segundos
 				Intent i = new Intent(MainActivity.this, CustomActivity.class);
+				i.putExtra("segundos", segundos);
 				startActivity(i);
 			}
 		});
@@ -42,7 +40,7 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	public Integer obtenerSegundos() {
+	public int obtenerSegundos() {
 		RadioGroup radio = (RadioGroup) findViewById(R.id.MainActivity_radiogroup_segundos);
 		Integer seleccionado = radio.getCheckedRadioButtonId();
 		switch (seleccionado) {
@@ -53,7 +51,7 @@ public class MainActivity extends Activity {
 			case R.id.MainActivity_radio_10:
 				return 10;
 			default:
-				return null;
+				return 0;
 		}
 	}
 }

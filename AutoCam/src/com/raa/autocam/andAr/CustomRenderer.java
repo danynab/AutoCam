@@ -2,6 +2,7 @@ package com.raa.autocam.andAr;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.speech.tts.TextToSpeech;
 import edu.dhbw.andar.AndARRenderer;
 import edu.dhbw.andar.interfaces.OpenGLRenderer;
 
@@ -18,15 +19,19 @@ public class CustomRenderer implements OpenGLRenderer {
 	/**
 	 * Light definitions
 	 */
-	CustomObject someObject;
-	boolean finished;
-	CustomActivity context;
-	String texto;
-	int momento;
+	private CustomObject someObject;
+	private TextToSpeech tts;
+	private boolean finished;
+	private CustomActivity context;
+	private String texto;
+	private int segundos;
 
-	public CustomRenderer(CustomObject someObject, CustomActivity context) {
+	public CustomRenderer(CustomObject someObject, TextToSpeech tts,
+			int segundos, CustomActivity context) {
 		this.someObject = someObject;
+		this.tts = tts;
 		this.context = context;
+		this.segundos = segundos;
 	}
 
 	/**
@@ -34,8 +39,21 @@ public class CustomRenderer implements OpenGLRenderer {
 	 * other OpenGL specific things.
 	 */
 	public final void setupEnv(GL10 gl) {
-		if (this.someObject.isVisible())
-			context.objectoDetectado();
+		if (this.someObject.isVisible()) {
+			while (!tts.isSpeaking()) {
+				if (!finished) {
+					texto = "Te he encontrado. En " + String.valueOf(segundos)
+							+ " segundos se sacará la foto. Comienza a contar.";
+					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
+					finished = true;
+				} else {
+					context.objectoDetectado();
+				}
+			}
+		} else {
+			this.tts.stop();
+			finished = false;
+		}
 	}
 
 	@Override
