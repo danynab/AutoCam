@@ -20,6 +20,7 @@
         android:text="@string/MainActivity_selecciona_temporizador"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    
     <RadioGroup
         android:id="@+id/MainActivity_radiogroup_segundos"
         android:layout_width="wrap_content"
