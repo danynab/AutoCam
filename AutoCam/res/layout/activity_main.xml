@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:gravity="center"
         android:text="@string/MainActivity_textview_descripcion"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -20,7 +21,6 @@
         android:text="@string/MainActivity_selecciona_temporizador"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    
     <RadioGroup
         android:id="@+id/MainActivity_radiogroup_segundos"
         android:layout_width="wrap_content"
