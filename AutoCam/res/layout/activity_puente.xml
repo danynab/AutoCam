@@ -9,8 +9,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Te he encontrado"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="50sp" />
+            android:textSize="70sp" />
 
     </FrameLayout>

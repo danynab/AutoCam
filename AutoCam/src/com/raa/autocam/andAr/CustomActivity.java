@@ -46,17 +46,10 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-
+		finish();
 		Intent i = new Intent(this, PuenteActivity.class);
 		i.putExtra("segundos", segundos);
 		startActivity(i);
-		finish();
-	}
-
-	@Override
-	protected void onPause() {
-		finish();
-		super.onPause();
 	}
 
 	@Override
