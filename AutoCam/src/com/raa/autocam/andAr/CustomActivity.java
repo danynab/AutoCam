@@ -1,31 +1,24 @@
 package com.raa.autocam.andAr;
 
-import java.util.Locale;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 
-import com.raa.autocam.CamaraActivity;
 import com.raa.autocam.PuenteActivity;
 
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
-import edu.dhbw.andar.CameraHolder;
 import edu.dhbw.andar.exceptions.AndARException;
 
-public class CustomActivity extends AndARActivity {// implements
-		//TextToSpeech.OnInitListener {
+public class CustomActivity extends AndARActivity {
+
 	CustomObject someObject;
 	ARToolkit artoolkit;
-	TextToSpeech tts;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
-		//tts = new TextToSpeech(this, this);
 
 		try {
 			// register a object for each marker type
@@ -46,23 +39,9 @@ public class CustomActivity extends AndARActivity {// implements
 	}
 
 	public void objectoDetectado() {
-		
-		
 		Intent i = new Intent(CustomActivity.this, PuenteActivity.class);
 		startActivity(i);
 		finish();
-	}
-
-	@Override
-	public void onDestroy() {
-		// Don't forget to shutdown tts!
-		
-		/*if (tts != null) {
-			tts.stop();
-			tts.shutdown();
-		}*/
-		super.onDestroy();
-		CameraHolder.instance().release();
 	}
 
 	/**
@@ -75,16 +54,4 @@ public class CustomActivity extends AndARActivity {// implements
 		Log.e("AndAR EXCEPTION", ex.getMessage());
 		finish();
 	}
-
-	/*public void onInit(int status) {
-		if (status == TextToSpeech.SUCCESS) {
-			int result = tts.setLanguage(new Locale("es"));
-			if (result == TextToSpeech.LANG_MISSING_DATA
-					|| result == TextToSpeech.LANG_NOT_SUPPORTED) {
-				Log.e("ARAndARTest", "This Language is not supported");
-			} else {
-				Log.d("ARAndARTest", "Initilization OK");
-			}
-		}
-	}*/
 }

@@ -40,32 +40,7 @@ public class CustomRenderer implements OpenGLRenderer {
 	 */
 	public final void setupEnv(GL10 gl) {
 		if (this.someObject.isVisible())
-			context.objectoDetectado();/*
-		}
-			if (!this.tts.isSpeaking()) {
-				if (!finished) {
-					texto = "Te he encontrado.";
-					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
-					finished = true;
-					momento = TIEMPO + 1;
-				}
-			}
-			if (!this.tts.isSpeaking() && finished) {
-				if (momento == 0)
-					context.objectoDetectado();
-				else {
-					if (momento == 1)
-						texto = "Sonríe";
-					else
-						texto = String.valueOf(momento - 1);
-					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
-					momento--;
-				}
-			}
-		} else {
-			this.tts.stop();
-			finished = false;
-		}*/
+			context.objectoDetectado();
 	}
 
 	@Override
