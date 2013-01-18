@@ -24,7 +24,6 @@ public class CustomRenderer implements OpenGLRenderer {
 	private boolean finished;
 	private boolean hablado;
 	private CustomActivity context;
-	private String texto;
 	private int segundos;
 
 	public CustomRenderer(CustomObject someObject, TextToSpeech tts,
@@ -40,23 +39,22 @@ public class CustomRenderer implements OpenGLRenderer {
 	 * other OpenGL specific things.
 	 */
 	public final void setupEnv(GL10 gl) {
-		if (this.someObject.isVisible()) {
-			if (!tts.isSpeaking()) {
-				if (!finished) {
-					texto = "Te he encontrado. En " + String.valueOf(segundos)
-							+ " segundos se sacará la foto. Comienza a contar.";
-					this.tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null);
-					hablado = true;
+		if (this.someObject.isVisible()){
+			if (!this.tts.isSpeaking()){
+				if (!finished){
+					String text = "Te he encontrado. En " + String.valueOf(segundos) + " segundos se sacará la foto. Comienza a contar.";
+					this.tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+					finished = true;
 				}
 				if (hablado)
-					finished = true;
-			}
-			if (hablado && finished) {
-				context.objectoDetectado();
-				hablado = false;
-			}
-		} else {
+					context.objectoDetectado();
+			} else
+				hablado = true;
+		}
+		else {
 			this.tts.stop();
+			finished = false;
+			hablado = false;
 		}
 	}
 

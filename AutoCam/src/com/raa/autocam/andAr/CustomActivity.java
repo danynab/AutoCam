@@ -46,20 +46,26 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-		tts.stop();
-		tts.shutdown();
-		
+
 		Intent i = new Intent(this, PuenteActivity.class);
 		i.putExtra("segundos", segundos);
 		startActivity(i);
 		finish();
 	}
 
-	
 	@Override
 	protected void onPause() {
 		finish();
 		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		if (tts != null) {
+			tts.stop();
+			tts.shutdown();
+		}
+		super.onDestroy();
 	}
 
 	/**
