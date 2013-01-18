@@ -11,4 +11,12 @@ public class AcercaDeActivity extends Activity {
 		setContentView(R.layout.activity_acerca_de);
 	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		finish();
+	}
+	
+	
+
 }
