@@ -2,6 +2,7 @@ package com.raa.autocam;
 
 import java.io.IOException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -9,45 +10,21 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.raa.autocam.business.ManejadorFotos;
 
-public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
+public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
-	private Camera camara;
 	private Integer idCamara = -1;
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
-
-	@SuppressWarnings("deprecation")
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_camara);
-//
-//		if (!existeCamara()) {
-//			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
-//					.show();
-//			finish();
-//		} else {
-//			idCamara = buscarCamaraTrasera();
-//			if (idCamara == null) {
-//				Toast.makeText(this, R.string.error_no_camara_trasera,
-//						Toast.LENGTH_LONG).show();
-//			} else {
-//				surfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
-//				surfaceHolder = surfaceView.getHolder();
-//				surfaceHolder.addCallback(this);
-//				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-//			}
-//		}
-	}
-	
-	private void detectarCamaraYSacarFoto() {
 		if (!existeCamara()) {
 			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
 					.show();
@@ -55,18 +32,22 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 		} else {
 			idCamara = buscarCamaraTrasera();
 			if (idCamara == null) {
-				Toast.makeText(this, R.string.error_no_camara_trasera,
+				Toast.makeText(this, R.string.error_no_camara_trasera, 
 						Toast.LENGTH_LONG).show();
 			} else {
-				sacarFoto();
+				surfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
+				
+				surfaceHolder = surfaceView.getHolder();
+				surfaceHolder.addCallback(this);
+				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+				
 			}
 		}
 	}
 
 	private void sacarFoto() {
-		camara.unlock();
-		camara.takePicture(null, null, new ManejadorFotos(
-				getApplicationContext()));
+		//camara.takePicture(null, null, new ManejadorFotos(getApplicationContext()));
 	}
 
 	private boolean existeCamara() {
@@ -103,19 +84,29 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		camara = Camera.open(idCamara);
-		try {
-			camara.setPreviewDisplay(holder);
-			camara.startPreview();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-//		sacarFoto();
+		Camera camara = Camera.open(idCamara);
+			try {
+				camara.setPreviewDisplay(holder);
+				camara.startPreview();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			//sacarFoto();
 	}
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder arg0) {
-		camara.stopPreview();
-		camara.release();
+		//camara.stopPreview();
+		//camara.release();
 	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		finish();
+	}
+
+	
+	
 }

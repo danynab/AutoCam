@@ -16,7 +16,7 @@ import edu.dhbw.andar.interfaces.OpenGLRenderer;
  */
 public class CustomRenderer implements OpenGLRenderer {
 
-	private final int TIEMPO = 5;
+	private final int TIEMPO = 0;
 
 	/**
 	 * Light definitions
@@ -28,8 +28,7 @@ public class CustomRenderer implements OpenGLRenderer {
 	String texto;
 	int momento;
 
-	public CustomRenderer(CustomObject someObject, TextToSpeech tts,
-			CustomActivity context) {
+	public CustomRenderer(CustomObject someObject, CustomActivity context) {
 		this.someObject = someObject;
 		this.tts = tts;
 		this.context = context;
@@ -40,7 +39,9 @@ public class CustomRenderer implements OpenGLRenderer {
 	 * other OpenGL specific things.
 	 */
 	public final void setupEnv(GL10 gl) {
-		if (this.someObject.isVisible()) {
+		if (this.someObject.isVisible())
+			context.objectoDetectado();/*
+		}
 			if (!this.tts.isSpeaking()) {
 				if (!finished) {
 					texto = "Te he encontrado.";
@@ -64,7 +65,7 @@ public class CustomRenderer implements OpenGLRenderer {
 		} else {
 			this.tts.stop();
 			finished = false;
-		}
+		}*/
 	}
 
 	@Override

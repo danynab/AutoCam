@@ -8,22 +8,24 @@ import android.speech.tts.TextToSpeech;
 import android.util.Log;
 
 import com.raa.autocam.CamaraActivity;
+import com.raa.autocam.PuenteActivity;
 
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
+import edu.dhbw.andar.CameraHolder;
 import edu.dhbw.andar.exceptions.AndARException;
 
-public class CustomActivity extends AndARActivity implements
-		TextToSpeech.OnInitListener {
+public class CustomActivity extends AndARActivity {// implements
+		//TextToSpeech.OnInitListener {
 	CustomObject someObject;
 	ARToolkit artoolkit;
 	TextToSpeech tts;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-
+		
 		super.onCreate(savedInstanceState);
-		tts = new TextToSpeech(this, this);
+		//tts = new TextToSpeech(this, this);
 
 		try {
 			// register a object for each marker type
@@ -33,7 +35,7 @@ public class CustomActivity extends AndARActivity implements
 			artoolkit.registerARObject(someObject);
 
 			// optional, may be set to null
-			CustomRenderer renderer = new CustomRenderer(someObject, tts, this);
+			CustomRenderer renderer = new CustomRenderer(someObject, this);
 			// or might be omited
 			super.setNonARRenderer(renderer);
 		} catch (AndARException ex) {
@@ -44,20 +46,23 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-		Intent i = new Intent(this, CamaraActivity.class);
+		
+		
+		Intent i = new Intent(CustomActivity.this, PuenteActivity.class);
 		startActivity(i);
+		finish();
 	}
 
 	@Override
-	public void onPause() {
+	public void onDestroy() {
 		// Don't forget to shutdown tts!
-		if (tts != null) {
+		
+		/*if (tts != null) {
 			tts.stop();
 			tts.shutdown();
-		}
-		finish();
-		super.onPause();
-		
+		}*/
+		super.onDestroy();
+		CameraHolder.instance().release();
 	}
 
 	/**
@@ -71,7 +76,7 @@ public class CustomActivity extends AndARActivity implements
 		finish();
 	}
 
-	public void onInit(int status) {
+	/*public void onInit(int status) {
 		if (status == TextToSpeech.SUCCESS) {
 			int result = tts.setLanguage(new Locale("es"));
 			if (result == TextToSpeech.LANG_MISSING_DATA
@@ -81,5 +86,5 @@ public class CustomActivity extends AndARActivity implements
 				Log.d("ARAndARTest", "Initilization OK");
 			}
 		}
-	}
+	}*/
 }

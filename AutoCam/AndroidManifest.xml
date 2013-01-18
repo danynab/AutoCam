@@ -35,6 +35,10 @@
             android:label="@string/title_activity_camara"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.raa.autocam.PuenteActivity"
+            android:label="@string/title_activity_puente" >
+        </activity>
     </application>
 
 </manifest>
