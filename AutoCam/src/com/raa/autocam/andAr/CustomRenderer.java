@@ -2,7 +2,6 @@ package com.raa.autocam.andAr;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.speech.tts.TextToSpeech;
 import edu.dhbw.andar.AndARRenderer;
 import edu.dhbw.andar.interfaces.OpenGLRenderer;
 
@@ -16,13 +15,10 @@ import edu.dhbw.andar.interfaces.OpenGLRenderer;
  */
 public class CustomRenderer implements OpenGLRenderer {
 
-	private final int TIEMPO = 0;
-
 	/**
 	 * Light definitions
 	 */
 	CustomObject someObject;
-	TextToSpeech tts;
 	boolean finished;
 	CustomActivity context;
 	String texto;
@@ -30,7 +26,6 @@ public class CustomRenderer implements OpenGLRenderer {
 
 	public CustomRenderer(CustomObject someObject, CustomActivity context) {
 		this.someObject = someObject;
-		this.tts = tts;
 		this.context = context;
 	}
 
