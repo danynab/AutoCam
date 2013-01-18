@@ -44,7 +44,6 @@ public class CustomActivity extends AndARActivity implements
 	}
 
 	public void objectoDetectado() {
-		finish();
 		Intent i = new Intent(this, CamaraActivity.class);
 		startActivity(i);
 	}
@@ -56,7 +55,9 @@ public class CustomActivity extends AndARActivity implements
 			tts.stop();
 			tts.shutdown();
 		}
+		finish();
 		super.onPause();
+		
 	}
 
 	/**
