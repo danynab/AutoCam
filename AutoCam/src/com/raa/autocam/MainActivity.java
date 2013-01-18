@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,15 +40,31 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.MenuItem_acerca_de:
+			mostrarAcercaDe();
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	private void mostrarAcercaDe() {
+		Intent intent = new Intent(MainActivity.this, AcercaDeActivity.class);
+		startActivity(intent);
+	}
 
 	public int obtenerSegundos() {
 		RadioGroup radio = (RadioGroup) findViewById(R.id.MainActivity_radiogroup_segundos);
 		Integer seleccionado = radio.getCheckedRadioButtonId();
 		switch (seleccionado) {
-			case R.id.MainActivity_radio_3:
-				return 3;
 			case R.id.MainActivity_radio_5:
 				return 5;
+			case R.id.MainActivity_radio_8:
+				return 8;
 			case R.id.MainActivity_radio_10:
 				return 10;
 			default:

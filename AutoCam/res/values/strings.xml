@@ -8,11 +8,18 @@
     <string name="error_no_camara">Lo siento. No hay ninguna cámara</string>
     <string name="error_no_camara_trasera">Lo siento. No hay camara trasera</string>
     <string name="MainActivity_boton_comenzar">Comenzar</string>
-    <string name="MainActivity_radio_3">3 s</string>
+    <string name="MainActivity_radio_8">8 s</string>
     <string name="MainActivity_radio_5">5 s</string>
     <string name="MainActivity_radio_10">10 s</string>
     <string name="MainActivity_selecciona_temporizador">Selecciona el temporizador</string>
     <string name="MainActivity_textview_descripcion">Esta aplicación utiliza la API AndAR para automatizar el proceso de tomar una fotografía desde tu teléfono.</string>
     <string name="title_activity_puente">PuenteActivity</string>
+    <string name="MenuItem_acerca_de">Acerca de</string>
+    <string name="title_activity_acerca_de">AcercaDeActivity</string>
+    <string name="Acerca_aplicacion">Esta aplicación ha sido realizada como trabajo final de la asignatura Realidad y Accesibilidad Aumentada perteneciente al grado en Ingeniería Informática del Software por la Universidad de Oviedo por:</string>
+    <string name="dani_meana">Daniel Meana Llorián</string>
+    <string name="uo_dani">UO219171@uniovi.es</string>
+    <string name="cristian_alvarez">Cristian Álvarez Belaustegui</string>
+    <string name="uo_cris">UO218847@uniovi.es</string>
 
 </resources>

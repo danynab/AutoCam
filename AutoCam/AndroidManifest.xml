@@ -39,6 +39,10 @@
             android:name="com.raa.autocam.PuenteActivity"
             android:label="@string/title_activity_puente" >
         </activity>
+        <activity
+            android:name="com.raa.autocam.AcercaDeActivity"
+            android:label="@string/title_activity_acerca_de" >
+        </activity>
     </application>
 
 </manifest>

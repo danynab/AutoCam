@@ -23,17 +23,17 @@
         android:orientation="horizontal" >
 
         <RadioButton
-            android:id="@+id/MainActivity_radio_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/MainActivity_radio_3" />
-
-        <RadioButton
             android:id="@+id/MainActivity_radio_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/MainActivity_radio_5" />
+
+        <RadioButton
+            android:id="@+id/MainActivity_radio_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/MainActivity_radio_8" />
 
         <RadioButton
             android:id="@+id/MainActivity_radio_10"
