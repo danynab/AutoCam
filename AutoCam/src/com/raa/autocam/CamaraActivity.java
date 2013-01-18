@@ -27,27 +27,28 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_camara);
+//
+//		if (!existeCamara()) {
+//			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
+//					.show();
+//			finish();
+//		} else {
+//			idCamara = buscarCamaraTrasera();
+//			if (idCamara == null) {
+//				Toast.makeText(this, R.string.error_no_camara_trasera,
+//						Toast.LENGTH_LONG).show();
+//			} else {
+//				surfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
+//				surfaceHolder = surfaceView.getHolder();
+//				surfaceHolder.addCallback(this);
+//				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-		if (!existeCamara()) {
-			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
-					.show();
-			finish();
-		} else {
-			idCamara = buscarCamaraTrasera();
-			if (idCamara == null) {
-				Toast.makeText(this, R.string.error_no_camara_trasera,
-						Toast.LENGTH_LONG).show();
-			} else {
-				surfaceView = (SurfaceView) findViewById(R.id.surfaceView1);
-				surfaceHolder = surfaceView.getHolder();
-				surfaceHolder.addCallback(this);
-				surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-			}
-		}
+//			}
+//		}
 	}
 
 	private void sacarFoto() {
+		camara.unlock();
 		camara.takePicture(null, null, new ManejadorFotos(
 				getApplicationContext()));
 	}
@@ -93,7 +94,7 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		sacarFoto();
+//		sacarFoto();
 	}
 
 	@Override
