@@ -5,12 +5,65 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/MainActivity_boton_comenzar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:text="Comenzar" />
+        android:text="@string/MainActivity_boton_comenzar" />
+
+    <RadioGroup
+        android:id="@+id/MainActivity_radiogroup_segundos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/MainActivity_radio_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/MainActivity_radio_3" />
+
+        <RadioButton
+            android:id="@+id/MainActivity_radio_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/MainActivity_radio_5" />
+
+        <RadioButton
+            android:id="@+id/MainActivity_radio_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/MainActivity_radio_10" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/MainActivity_texto_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/MainActivity_radiogroup_segundos"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="19dp"
+        android:gravity="center_horizontal"
+        android:text="@string/MainActivity_selecciona_temporizador"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/MainActivity_boton_comenzar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/MainActivity_textview_descripcion"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

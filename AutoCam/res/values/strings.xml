@@ -7,5 +7,11 @@
     <string name="title_activity_camara">CamaraActivity</string>
     <string name="error_no_camara">Lo siento. No hay ninguna cámara</string>
     <string name="error_no_camara_trasera">Lo siento. No hay camara trasera</string>
+    <string name="MainActivity_boton_comenzar">Comenzar</string>
+    <string name="MainActivity_radio_3">3 s</string>
+    <string name="MainActivity_radio_5">5 s</string>
+    <string name="MainActivity_radio_10">10 s</string>
+    <string name="MainActivity_selecciona_temporizador">Selecciona el temporizador</string>
+    <string name="MainActivity_textview_descripcion">Esta aplicación utiliza la API AndAR para automatizar el proceso de tomar una fotografía desde tu teléfono.</string>
 
 </resources>
