@@ -46,6 +46,22 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback {
 //			}
 //		}
 	}
+	
+	private void detectarCamaraYSacarFoto() {
+		if (!existeCamara()) {
+			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
+					.show();
+			finish();
+		} else {
+			idCamara = buscarCamaraTrasera();
+			if (idCamara == null) {
+				Toast.makeText(this, R.string.error_no_camara_trasera,
+						Toast.LENGTH_LONG).show();
+			} else {
+				sacarFoto();
+			}
+		}
+	}
 
 	private void sacarFoto() {
 		camara.unlock();
