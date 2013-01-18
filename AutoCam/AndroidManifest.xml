@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -29,6 +29,10 @@
             android:name="com.raa.autocam.andAr.CustomActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.raa.autocam.CamaraActivity"
+            android:label="@string/title_activity_camara" >
         </activity>
     </application>
 
