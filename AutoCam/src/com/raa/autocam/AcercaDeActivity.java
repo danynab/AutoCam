@@ -1,8 +1,7 @@
 package com.raa.autocam;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.os.Bundle;
 
 public class AcercaDeActivity extends Activity {
 
