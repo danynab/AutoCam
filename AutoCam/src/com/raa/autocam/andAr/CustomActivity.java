@@ -24,7 +24,6 @@ public class CustomActivity extends AndARActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		tts = new TextToSpeech(this, this);
 		segundos = getIntent().getExtras().getInt("segundos");

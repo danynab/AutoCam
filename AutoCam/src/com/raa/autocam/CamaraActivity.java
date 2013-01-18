@@ -2,7 +2,6 @@ package com.raa.autocam;
 
 import java.io.IOException;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -10,9 +9,8 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.Window;
 import android.widget.Toast;
-
-import com.raa.autocam.business.ManejadorFotos;
 
 public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 
@@ -25,6 +23,8 @@ public class CamaraActivity extends Activity implements SurfaceHolder.Callback{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camara);
 
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
 		if (!existeCamara()) {
 			Toast.makeText(this, R.string.error_no_camara, Toast.LENGTH_LONG)
 					.show();
