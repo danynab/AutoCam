@@ -2,9 +2,13 @@ package com.raa.autocam.andAr;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+
+import com.raa.autocam.MainActivity;
+
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
 import edu.dhbw.andar.exceptions.AndARException;
@@ -35,7 +39,13 @@ public class CustomActivity extends AndARActivity implements TextToSpeech.OnInit
 		}		
 		startPreview();
 	}
-	
+
+	public void objectoDetectado() {
+		Intent i = new Intent(this, MainActivity.class);
+		startActivity(i);
+	}	
+
+
 	@Override
     public void onPause() {
         // Don't forget to shutdown tts!
